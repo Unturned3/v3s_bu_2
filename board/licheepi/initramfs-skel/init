@@ -1,0 +1,16 @@
+#!/bin/sh
+
+echo "Press ENTER to interrupt boot..."
+read -t 1 ans
+if [ $? == 0 ]; then
+	echo "Boot interrupted."
+	while [ true ]; do
+		/bin/sh
+		echo "Shell respawned."
+	done
+else
+	echo "Pivoting from initramfs to real root..."
+	mount /dev/mmcblk0p2 /newroot
+	mount --move /dev /newroot/dev
+	exec switch_root /newroot /sbin/init
+fi
