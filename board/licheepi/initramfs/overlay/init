@@ -1,0 +1,32 @@
+#!/bin/sh
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
+sleep 2
+
+echo -e "${BLUE}/init: mounting /dev...${NC}"
+
+mount -t devtmpfs dev /dev	# devtmpfs is NOT auto-mounted by kernel in initramfs
+
+sleep 2
+
+echo -e "${RED}Press ENTER to interrupt boot...${NC}"
+read -t 2 ans
+
+if [ $? == 0 ]; then
+	echo -e "${BLUE}Boot interrupted.${NC}"
+	mount -t proc proc /proc
+	while [ true ]; do
+		#/bin/sh </dev/ttyS0 >/dev/ttyS0 2>&1 &
+		/bin/sh
+		echo -e "${BLUE}Shell respawned. Use 'reboot -f' or 'halt -f' to restart/shutdown the system.${NC}"
+	done
+else
+	echo -e "${BLUE}Switching from initramfs to real root...${NC}"
+	mount /dev/mmcblk0p2 /newroot
+	mount --move /dev /newroot/dev
+	exec switch_root /newroot /sbin/init
+fi
