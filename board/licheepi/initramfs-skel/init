@@ -1,15 +1,26 @@
 #!/bin/sh
 
-echo "Press ENTER to interrupt boot..."
-read -t 1 ans
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
+mount -t devtmpfs dev /dev	# devtmpfs is NOT auto-mounted by kernel in initramfs
+
+sleep 0.5
+
+echo "${RED}Press ENTER to interrupt boot...${NC}"
+read -t 2 ans
+
 if [ $? == 0 ]; then
-	echo "Boot interrupted."
+	echo "${BLUE}Boot interrupted.${NC}"
+	mount -t proc proc /proc
 	while [ true ]; do
-		/bin/sh
-		echo "Shell respawned."
+		/bin/sh </dev/ttyS0 >/dev/ttyS0 2>&1 &
+		echo "${BLUE}Shell respawned. Use 'reboot -f' or 'halt -f' to restart/shutdown the system.${NC}"
 	done
 else
-	echo "Pivoting from initramfs to real root..."
+	echo "${BLUE}Switching from initramfs to real root...${NC}"
 	mount /dev/mmcblk0p2 /newroot
 	mount --move /dev /newroot/dev
 	exec switch_root /newroot /sbin/init
