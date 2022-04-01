@@ -1,7 +1,7 @@
 #
 # Automatically generated make config: don't edit
 # Busybox version: 1.35.0
-# Wed Mar 30 21:00:31 2022
+# Fri Apr  1 22:58:27 2022
 #
 CONFIG_HAVE_DOT_CONFIG=y
 
@@ -26,7 +26,7 @@ CONFIG_PID_FILE_PATH=""
 CONFIG_BUSYBOX=y
 CONFIG_FEATURE_SHOW_SCRIPT=y
 CONFIG_FEATURE_INSTALLER=y
-CONFIG_INSTALL_NO_USR=y
+# CONFIG_INSTALL_NO_USR is not set
 CONFIG_FEATURE_SUID=y
 # CONFIG_FEATURE_SUID_CONFIG is not set
 # CONFIG_FEATURE_SUID_CONFIG_QUIET is not set
@@ -40,7 +40,7 @@ CONFIG_FEATURE_SYSLOG=y
 #
 # Build Options
 #
-CONFIG_STATIC=y
+# CONFIG_STATIC is not set
 # CONFIG_PIE is not set
 # CONFIG_NOMMU is not set
 # CONFIG_BUILD_LIBBUSYBOX is not set
@@ -54,7 +54,7 @@ CONFIG_EXTRA_LDFLAGS=""
 CONFIG_EXTRA_LDLIBS=""
 # CONFIG_USE_PORTABLE_CODE is not set
 CONFIG_STACK_OPTIMIZATION_386=y
-CONFIG_STATIC_LIBGCC=y
+# CONFIG_STATIC_LIBGCC is not set
 
 #
 # Installation Options ("make install" behavior)
