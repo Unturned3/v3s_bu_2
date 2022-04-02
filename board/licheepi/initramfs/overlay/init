@@ -1,9 +1,12 @@
 #!/bin/sh
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-BLUE='\033[0;34m'
-NC='\033[0m'
+export RED='\033[0;31m'
+export GREEN='\033[0;32m'
+export BLUE='\033[0;34m'
+export NC='\033[0m'
+
+export SSH_SRV='rh1521@shell1.doc.ic.ac.uk'
+export SSH_DIR='~/bu-output'
 
 sleep 1
 
