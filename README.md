@@ -1,3 +1,13 @@
+
+
+## Important Notice
+
+This repo is a temporary backup archive and is no longer actively maintained.
+
+Please visit [Unturned3/v3s3](https://github.com/Unturned3/v3s3) for an up-to-date buildroot package for the Allwinner V3s SoC.
+
+-------------------------------
+
 Buildroot is a simple, efficient and easy-to-use tool to generate embedded
 Linux systems through cross-compilation.
 
